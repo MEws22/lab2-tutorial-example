@@ -52,4 +52,5 @@ As an example, there are four scoping examples provided in the [scoping file](ht
 Moreover, referencing objects as a result of scoping allows the modeler to simply use the name of the referenced element without relative referencing as shown below. Even though the reference of itemConneciton with markerA is defined as ```markerA=[Marker|EString]```, ```HandleConnectionPoint``` forms part of the suggestions while modeling and on selecting, XText references it directly by its name.
 
 So finally, the ```itemConnection``` looks like this -- 
+
 <img width="500" alt="ScopingExample" src="https://user-images.githubusercontent.com/12189156/200946102-45a58170-2cc7-4bda-946f-f4f32276690b.png">
