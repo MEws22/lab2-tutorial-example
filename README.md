@@ -35,7 +35,7 @@ After adding EString, XText compiler is able to find the element and gives no er
 
 <img width="500" alt="referencing_resolvedpng" src="https://user-images.githubusercontent.com/12189156/200929043-e2a078bf-dbdf-410a-b7d2-1ac923dbba2f.png">
 
-##Scoping
+## Scoping
 
 Scoping assists the modeling in providing suggestions for autocompletion while creating a model, similar to the suggestions in any IDE. You can check out the details of scoping in the video tutorial.
 
