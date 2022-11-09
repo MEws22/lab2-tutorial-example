@@ -1,0 +1,87 @@
+grammar org.xtext.example.Tutorial with org.eclipse.xtext.common.Terminals
+
+import "http://www.example.org/tutorial" 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+Factory returns Factory:
+	'factory' name=ID '{'
+		(itemTypes+=ItemType)+
+	'}';
+
+ItemType returns ItemType:
+	BasicItemType | ComplexItemType
+;
+
+enum Material:
+	WOOD | STEEL | GOLD | COPPER
+;
+
+Shape returns Shape:
+	CylinderShape | BlockShape
+;
+
+CylinderShape returns CylinderShape:
+	'CylinderShape' '{'
+		'l' ':' length=EDouble 'cm'
+		'r' ':' radius=EDouble 'cm'
+	'}'
+;
+
+BlockShape returns BlockShape:
+	'BlockShape' '{' 
+		'l' ':' length=EDouble 'cm'
+		'w' ':' width=EDouble 'cm'
+		'h' ':' heigth=EDouble 'cm' 	
+	'}'
+;
+
+
+BasicItemType returns BasicItemType:
+	'basicItemType' name=ID '(' material=Material ')''{'
+		'shape' ':' shape=Shape
+		color=Color
+		('markers' ':' '{' markers+=Marker+ '}')?
+	'}'
+;
+
+Color returns Color:
+	'color' name=EString ':' '{'
+		'r' ':' red=EInt
+		'g' ':' green=EInt
+		'b' ':' blue=EInt
+	'}'
+;
+
+Marker returns Marker:
+	name=ID
+;
+
+ComplexItemType returns ComplexItemType:
+	'complexItemType' name=ID '{' 
+		'components' ':' '{'
+			components+=Component
+			(components+=Component)+
+		'}'
+		
+		'connections' ':' '{' 
+			itemConnections+=ItemConnection+
+		'}'
+	'}'
+;
+
+Component returns Component:
+	name=ID '(' itemType=[BasicItemType] ')'
+;
+
+ItemConnection returns ItemConnection:
+	componentA=[Component] '(' markerA=[Marker|EString] ')' '<->' componentB=[Component] '(' markerB=[Marker|EString] ')'
+;
+
+EString returns ecore::EString:
+	STRING | ID;
+
+EDouble returns ecore::EDouble:
+	'-'? INT? '.' INT (('E'|'e') '-'? INT)?;
+
+EInt returns ecore::EInt:
+	'-'? INT;

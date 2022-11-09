@@ -1,0 +1,40 @@
+factory HammerFactory {
+	basicItemType HammerHandle(COPPER){
+		shape: CylinderShape {
+			l : 25.0 cm
+			r : 2.0 cm
+		}
+		color brown: {
+			r : 135
+			g : 95 
+			b : 65
+		}
+		markers : {
+			HeadConnectionPoint
+		}
+	}
+	basicItemType HammerHead(STEEL){
+		shape: BlockShape {
+			l : 25.0 cm
+			w : 2.0 cm
+			h : 20.0 cm
+		}
+		color grey: {
+			r : 130
+			g : 95 
+			b : 65
+		}
+		markers : {
+			HandleConnectionPoint
+		}
+	}
+	complexItemType Hammer {
+		components: {
+			HandleC(HammerHandle)
+			HeadC(HammerHead)
+		}
+		connections: {
+			HandleC("HammerHandle.HeadConnectionPoint") <-> HeadC("HammerHead.HandleConnectionPoint")
+		}
+	}
+}

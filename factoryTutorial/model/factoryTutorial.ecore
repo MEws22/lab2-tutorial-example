@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="factoryTutorial" nsURI="http://www.example.org/factoryTutorial"
+    nsPrefix="factoryTutorial">
+  <eClassifiers xsi:type="ecore:EClass" name="Factory">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="overseasitem" upperBound="-1"
+        eType="#//OverseasItem" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itemtype" upperBound="-1"
+        eType="#//ItemType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ItemType" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OverseasItem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="overseasmaterial" upperBound="-1"
+        eType="#//OverseasMaterial" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OverseasMaterial">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BasicItemType" eSuperTypes="#//ItemType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ComplexItemType" eSuperTypes="#//ItemType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="overseasitem" eType="#//OverseasItem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="overseasmaterial" eType="#//OverseasMaterial"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" upperBound="-1"
+        eType="#//Component" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Component">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itemtype" eType="#//ItemType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="overseasitem" eType="#//OverseasItem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="overseasmaterial" eType="#//OverseasMaterial"/>
+  </eClassifiers>
+</ecore:EPackage>
