@@ -7,15 +7,19 @@ package org.xtext.example.scoping;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 
 import tutorial.BasicItemType;
+import tutorial.ComplexItemType;
 import tutorial.Component;
 import tutorial.Factory;
+import tutorial.ItemConnection;
 import tutorial.ItemType;
+import tutorial.Marker;
 import tutorial.TutorialPackage;
 
 /**
@@ -38,4 +42,35 @@ public class TutorialScopeProvider extends AbstractDeclarativeScopeProvider {
 		return IScope.NULLSCOPE;
 	}
 	
+	public IScope scope_ItemConnection_componentA(ItemConnection itemConnection, EReference eReference) {
+		if(eReference.equals(TutorialPackage.Literals.ITEM_CONNECTION__COMPONENT_A)) {
+			ComplexItemType containingComplexItem = (ComplexItemType) itemConnection.eContainer();
+			return Scopes.scopeFor(containingComplexItem.getComponents());
+		}
+		return IScope.NULLSCOPE;
+	}
+	
+	public IScope scope_ItemConnection_markerA(ItemConnection itemConnection, EReference eReference) {
+		
+		if(eReference.equals(TutorialPackage.Literals.ITEM_CONNECTION__MARKER_A)) {
+			Component itemComponentA = itemConnection.getComponentA();
+			return Scopes.scopeFor(itemComponentA.getItemType().getMarkers());
+		}
+		
+		return IScope.NULLSCOPE;
+	}
+	
+	public IScope scope_ItemConnection_componentB(ItemConnection itemConnection, EReference eReference) {
+		
+		if(eReference.equals(TutorialPackage.Literals.ITEM_CONNECTION__COMPONENT_B)) {
+			ComplexItemType containingComplexItem = (ComplexItemType) itemConnection.eContainer();
+			Component itemComponentA = itemConnection.getComponentA();
+			return Scopes.scopeFor(containingComplexItem.getComponents().stream()
+					.filter(component -> !component.equals(itemComponentA))
+					.collect(Collectors.toList())
+					);
+					
+		}
+		return IScope.NULLSCOPE;
+	}	
 }
