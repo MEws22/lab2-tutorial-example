@@ -31,11 +31,11 @@ ItemConnection returns ItemConnection:
 Without adding EString, XText compiler cannot find the element and it gives error such as -- 
 ```Couldn't resolve reference to Marker```
 
-<img width="635" alt="referencing_error" src="https://user-images.githubusercontent.com/12189156/200928949-debdf7fc-91e7-4994-8ea1-ab09793a2362.png">
+<img width="500" alt="referencing_error" src="https://user-images.githubusercontent.com/12189156/200928949-debdf7fc-91e7-4994-8ea1-ab09793a2362.png">
 
 After adding EString, XText compiler is able to find the element and gives no error.
 
-<img width="836" alt="referencing_resolvedpng" src="https://user-images.githubusercontent.com/12189156/200929043-e2a078bf-dbdf-410a-b7d2-1ac923dbba2f.png">
+<img width="500" alt="referencing_resolvedpng" src="https://user-images.githubusercontent.com/12189156/200929043-e2a078bf-dbdf-410a-b7d2-1ac923dbba2f.png">
 
 ##Scoping
 
@@ -47,11 +47,9 @@ As an example, there are four scoping examples provided in the [scoping file](ht
 3. Scoping on ```ItemConnection``` ```markerA``` relationship to suggest ```markers``` of the ```itemType``` of ```componentA```
 4. Scoping on ```ItemConnection``` ```componentA``` relationship to suggest components that are part of containing complex item excluding ```componentA```
 
+<img width="500" alt="Xtext_Autocompletion" src="https://user-images.githubusercontent.com/12189156/200946060-5964dfae-ed87-4d21-8e74-1b301384b14b.png">
 
 Moreover, referencing objects as a result of scoping allows the modeler to simply use the name of the referenced element without relative referencing as shown below. Even though the reference of itemConneciton with markerA is defined as ```markerA=[Marker|EString]```, ```HandleConnectionPoint``` forms part of the suggestions while modeling and on selecting, XText references it directly by its name.
 
-<img width="1059" alt="image" src="https://user-images.githubusercontent.com/12189156/200943977-90a3c27e-8f5e-45a7-9502-f359901cfc8a.png">
-
 So finally, the ```itemConnection``` looks like this -- 
-<img width="1049" alt="image" src="https://user-images.githubusercontent.com/12189156/200943213-a2e570df-1aab-4ce0-a423-eedf3481d320.png">
-
+<img width="500" alt="ScopingExample" src="https://user-images.githubusercontent.com/12189156/200946102-45a58170-2cc7-4bda-946f-f4f32276690b.png">
