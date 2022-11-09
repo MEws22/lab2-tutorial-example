@@ -3,6 +3,8 @@ Lab2 tutorial examples as presented in the tutorial
 
 This tutorial covers XText textual domain specific modeling language with a factory metamodel. The concepts covered in the tutorial are creating an XText Grammer for a [hammer factory metamodel](https://github.com/MEws22/lab2-tutorial-example/tree/main/tutorial) as given in Figure. 1.
 
+![factory_metamodel](https://user-images.githubusercontent.com/12189156/200930038-d0602fa6-83a8-45b3-a3f2-c3af0435003b.png)
+
 
 The [metamodel](https://github.com/MEws22/lab2-tutorial-example/tree/main/tutorial) covers the concepts presented in the video tutorial [here](https://www.youtube.com/watch?v=EKpqPX5tcn0). This includes defining an XText Grammar and scoping. 
 
